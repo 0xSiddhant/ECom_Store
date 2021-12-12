@@ -1,0 +1,40 @@
+openapi: 3.0.0
+info:
+  title: Learn Swagger and backend
+  description: Exploring the swagger apis
+  version: 1.1.0
+  contact:
+    email: siddhant@google.com
+    url: "http://siddhant.com"
+
+# servers:
+#   - url: "http://localhost:4000/api/v1"
+#     description: For LocalHost - secure
+#   - url: "http://localhost:4000/api/v2"
+#     description: For LocalHost - regular
+
+servers:
+  - url: "{protocol}://localhost:4000/api/{version}"
+    description: For LocalHost
+    variables: # variable declaration
+      protocol:
+        enum: # enum
+          - http
+          - https
+        default: http
+      version:
+        enum:
+          - v1
+          - v2
+          - v3
+        default: v1
+
+components:
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: token
+    BearerAuth:
+      type: http
+      scheme: bearer
