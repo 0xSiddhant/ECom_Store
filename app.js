@@ -25,9 +25,11 @@ app.use(cookieParser())
 
 // import routes
 const home = require("./routes/home")
+const user = require("./routes/user")
 
 // routes middleware
 app.use("/api/v1", home);
+app.use("/api/v1", user);
 
 
 // export app js
