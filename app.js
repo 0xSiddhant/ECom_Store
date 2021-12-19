@@ -20,7 +20,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 // cookies and file middleware
-app.use(fileUpload())
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: "/tmp/"
+}))
 app.use(cookieParser())
 
 // import routes
